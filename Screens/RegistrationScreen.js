@@ -11,6 +11,7 @@ const initialState = {
 const RegistrationScreen = ({navigation}) => {
     const [isShowKeyboard, setIsShowKeyboard] = useState(false);
     const [state, setState] = useState(initialState);
+    const [statePassword, setStatePassword] = useState(true);
 
     const keyboardHide = () => {
         setIsShowKeyboard(false);
@@ -77,7 +78,7 @@ const RegistrationScreen = ({navigation}) => {
                                     style={styles.inputForm} 
                                     placeholder={'Password'} 
                                     maxLength={40} 
-                                    secureTextEntry={true}
+                                    secureTextEntry={statePassword}
                                     placeholderTextColor={"#BDBDBD"}
                                     value={state.password}
                                     onFocus={() => setIsShowKeyboard(true)}
@@ -88,8 +89,16 @@ const RegistrationScreen = ({navigation}) => {
                             <TouchableOpacity 
                                 activeOpacity={0.8} 
                                 style={styles.btnPassword}
+                                onPress={() => {
+                                    if(!statePassword) {
+                                        
+                                        setStatePassword(true)
+                                    } else {
+                                        setStatePassword(false)
+                                    }
+                                    }}
                             >
-                                <Text style={styles.btnPasswordTitle}>Show</Text>
+                                <Text style={styles.btnPasswordTitle}>{statePassword ? "Show" : "Hide"}</Text>
                             </TouchableOpacity>
                         </View>
                         <TouchableOpacity 

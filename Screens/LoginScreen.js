@@ -10,7 +10,7 @@ const initialState = {
 const LoginScreen = ({navigation}) => {
     const [isShowKeyboard, setIsShowKeyboard] = useState(false);
     const [state, setState] = useState(initialState);
-    const [isShowPassword, setIsShowPassword] = useState(true);
+    const [statePassword, setStatePassword] = useState(true);
 
 
 
@@ -57,7 +57,7 @@ const LoginScreen = ({navigation}) => {
                                     style={styles.inputForm} 
                                     placeholder={'Password'} 
                                     maxLength={40} 
-                                    secureTextEntry={true}
+                                    secureTextEntry={statePassword}
                                     placeholderTextColor={"#BDBDBD"}
                                     value={state.password}
                                     onFocus={() => setIsShowKeyboard(true)}
@@ -68,8 +68,16 @@ const LoginScreen = ({navigation}) => {
                             <TouchableOpacity 
                                 activeOpacity={0.8} 
                                 style={styles.btnPassword}
+                                onPress={() => {
+                                    if(!statePassword) {
+                                        
+                                        setStatePassword(true)
+                                    } else {
+                                        setStatePassword(false)
+                                    }
+                                    }}
                             >
-                                <Text style={styles.btnPasswordTitle}>Show</Text>
+                                <Text style={styles.btnPasswordTitle}>{statePassword ? "Show" : "Hide"}</Text>
                             </TouchableOpacity>
                         </View>
 
