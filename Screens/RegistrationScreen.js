@@ -112,9 +112,7 @@ const RegistrationScreen = ({navigation}) => {
             
                     <TouchableOpacity
                         style={styles.navLoginBtn}
-                        onPress={() => {
-                            navigation.navigate('Login', {name: 'login'});
-                        }}
+                        onPress={() => navigation.navigate('Login')}
                     >
                         <Text style={styles.navLoginText}>Already have an account? Enter</Text>
                     </TouchableOpacity>
